@@ -27,11 +27,11 @@ public class Constant {
     public static final String TOPIC_DWD_TRAFFIC_DISPLAY = "dwd_traffic_display";
 
 
-    public static final String FENODES = "hadoop01:7030";
-    public static final String DORIS_FE_NODES = "hadoop01:7030,hadoop02:7030,hadoop03:7030";
-    public static final String DORIS_DATABASE = "dev_yiqun_shi";
-    public static final String DORIS_USERNAME = "root";
-    public static final String DORIS_PASSWORD = "";
+    public static final String FENODES = "10.39.48.33:8030";
+//    public static final String DORIS_FE_NODES = "10.39.48.33:7030,10.39.48.34:7030,10.39.48.35:7030";
+    public static final String DORIS_DATABASE = "dev_yq_s";
+    public static final String DORIS_USERNAME = "admin";
+    public static final String DORIS_PASSWORD = "zh1028,./";
 
 
     public static final String TOPIC_DWD_INTERACTION_COMMENT_INFO = "dwd_interaction_comment_info";

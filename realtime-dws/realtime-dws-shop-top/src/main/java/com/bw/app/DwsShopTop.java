@@ -42,6 +42,7 @@ public class DwsShopTop extends BaseApp {
         //关联维度
         SingleOutputStreamOperator<ShopBean> shopStream = getShopStream(reduceStream);
         //写到Mysql
+        shopStream.print();
 //        shopStream.addSink(new MySink());
     }
 

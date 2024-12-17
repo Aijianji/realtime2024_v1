@@ -23,17 +23,18 @@ public abstract class BaseApp {
         // 创建流式环境
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment(configuration);
         //设置并行度
-//        env.setParallelism(p);
-//        设置CK
-//        env.setStateBackend(new HashMapStateBackend());
-//        env.enableCheckpointing(5000);
-//        env.getCheckpointConfig().setCheckpointingMode(CheckpointingMode.EXACTLY_ONCE);
-//        env.getCheckpointConfig().setCheckpointStorage("hdfs://hadoop102:8020/gmall2023/stream/"+groupId );
-//        env.getCheckpointConfig().setMaxConcurrentCheckpoints(1);
-//        env.getCheckpointConfig().setMinPauseBetweenCheckpoints(5000);
-//        env.getCheckpointConfig().setCheckpointTimeout(10000);
-//        env.getCheckpointConfig().setExternalizedCheckpointCleanup(RETAIN_ON_CANCELLATION);
-        //设置ck状态为后端
+        env.setParallelism(p);
+        //设置CK
+        env.setStateBackend(new HashMapStateBackend());
+        env.enableCheckpointing(5000);
+        env.getCheckpointConfig().setCheckpointingMode(CheckpointingMode.EXACTLY_ONCE);
+        env.getCheckpointConfig().setCheckpointStorage("hdfs://hadoop01:8020/gmall2024/stream/"+groupId );
+        env.getCheckpointConfig().setMaxConcurrentCheckpoints(1);
+        env.getCheckpointConfig().setMinPauseBetweenCheckpoints(5000);
+        env.getCheckpointConfig().setCheckpointTimeout(10000);
+        env.getCheckpointConfig().setExternalizedCheckpointCleanup(RETAIN_ON_CANCELLATION);
+
+//        //设置ck状态为后端
 //        env.setStateBackend(new HashMapStateBackend());
 //        //设置ck执行时间间隔            毫秒
 //        env.enableCheckpointing(5000);
@@ -41,14 +42,15 @@ public abstract class BaseApp {
 //        env.getCheckpointConfig().setCheckpointingMode(CheckpointingMode.EXACTLY_ONCE);
 //        //设置ck最小间隔
 //        env.getCheckpointConfig().setMinPauseBetweenCheckpoints(5000);
-        //设置ck超时时间
+//        //设置ck超时时间
 //        env.getCheckpointConfig().setCheckpointTimeout(15000);
 //        //设置ck并发数
 //        env.getCheckpointConfig().setMaxConcurrentCheckpoints(1);
 //        //设置ck路径
-//        env.getCheckpointConfig().setCheckpointStorage("hdfs://hadoop102:8020/gmall2023/stream/"+groupId);
+//        env.getCheckpointConfig().setCheckpointStorage("hdfs://hadoop01:8020/gmall2024/stream/"+groupId);
 //        //job取消时 ck保留策略
 //        env.getCheckpointConfig().setExternalizedCheckpointCleanup(RETAIN_ON_CANCELLATION);
+
         //调用工具类消费数据
         DataStreamSource<String> streamSource = env.fromSource(FlinkSourceUtil.getKafkaSource(topicDb, groupId), WatermarkStrategy.noWatermarks(), "kafka_source");
 //        streamSource.print();
